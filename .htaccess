@@ -1,0 +1,86 @@
+RewriteEngine On
+RewriteBase /local_service_hub/
+
+# =========================
+# Auth Routes (User, Vendor, Admin)
+# =========================
+
+# User Auth
+RewriteRule ^user/login$ auth/login.php [L]
+RewriteRule ^user/logout$ auth/logout.php [L]
+RewriteRule ^user/register$ auth/register.php [L]
+RewriteRule ^user/forgot-password$ auth/forgot_password.php [L]
+RewriteRule ^user/verify-otp$ auth/verify_otp.php [L]
+
+# Vendor Auth
+RewriteRule ^vendor/login$ auth/login.php [L]
+RewriteRule ^vendor/logout$ auth/logout.php [L]
+RewriteRule ^vendor/register$ auth/register.php [L]
+RewriteRule ^vendor/forgot-password$ auth/forgot_password.php [L]
+RewriteRule ^vendor/verify-otp$ auth/verify_otp.php [L]
+
+# Admin Auth
+RewriteRule ^admin/login$ admin_auth/admin/admin_auth/admin_login.php [L]
+RewriteRule ^admin/logout$ admin_auth/admin/admin_auth/admin_logout.php [L]
+RewriteRule ^admin/register$ admin_auth/admin/admin_auth/admin_register.php [L]
+RewriteRule ^admin/forgot-password$ admin_auth/admin/admin_auth/admin_forgot_password.php [L]
+RewriteRule ^admin/verify-otp$ admin_auth/admin/admin_auth/admin_verify_otp.php [L]
+RewriteRule ^admin/reset-password$ admin_auth/admin/admin_auth/admin_set_new_password.php [L]
+RewriteRule ^admin/reset-otp$ admin_auth/admin/admin_auth/admin_reset_otp.php [L]
+
+# =========================
+# Admin Routes
+# =========================
+RewriteRule ^admin/dashboard$ admin_dashboard.php [L]
+RewriteRule ^admin/users$ admin_users.php [L]
+RewriteRule ^admin/vendors$ admin_vendors.php [L]
+RewriteRule ^admin/services$ admin_services.php [L]
+RewriteRule ^admin/bookings$ manage_bookings.php [L]
+RewriteRule ^admin/payments$ admin_payment.php [L]
+RewriteRule ^admin/categories$ manage_category.php [L]
+RewriteRule ^admin/categories/create$ create_category.php [L]
+RewriteRule ^admin/categories/edit/([0-9]+)$ edit_category.php?id=$1 [L]
+RewriteRule ^admin/categories/delete/([0-9]+)$ delete_category.php?id=$1 [L]
+RewriteRule ^admin/coupons$ list_coupon.php [L]
+RewriteRule ^admin/coupons/create$ admin_create_coupon.php [L]
+RewriteRule ^admin/queries$ admin_queries.php [L]
+RewriteRule ^admin/chat$ admin_chat.php [L]
+RewriteRule ^admin/chat/([a-z]+)/([0-9]+)$ admin_chat.php?partner_role=$1&partner_id=$2 [L]
+
+# Admin AJAX
+RewriteRule ^admin/delete-user$ delete_user.php [L]
+RewriteRule ^admin/delete-vendor$ delete_vendor.php [L]
+RewriteRule ^admin/delete-service$ delete_service.php [L]
+RewriteRule ^admin/delete-category$ delete_category.php [L]
+RewriteRule ^admin/update-booking$ update_booking_status.php [L]
+RewriteRule ^admin/send-message$ send_message.php [L]
+RewriteRule ^admin/fetch-messages$ fetch_messages.php [L]
+
+# =========================
+# Vendor Routes
+# =========================
+RewriteRule ^vendor/dashboard$ vendor_dashboard.php [L]
+RewriteRule ^vendor/bookings$ my_bookings.php [L]
+RewriteRule ^vendor/services$ vendor_services.php [L]
+RewriteRule ^vendor/chat$ vendor_chat.php [L]
+RewriteRule ^vendor/chat/([a-z]+)/([0-9]+)$ vendor_chat.php?partner_role=$1&partner_id=$2 [L]
+RewriteRule ^vendor/add-shop$ add_shop.php [L]
+RewriteRule ^vendor/complete-profile$ complete_profile.php [L]
+
+# =========================
+# User Routes
+# =========================
+RewriteRule ^user/dashboard$ dashboard.php [L]
+RewriteRule ^user/cart$ cart.php [L]
+RewriteRule ^user/checkout$ checkout.php [L]
+RewriteRule ^user/bookings$ my_bookings.php [L]
+RewriteRule ^user/chat$ chat.php [L]
+RewriteRule ^user/chat/([a-z]+)/([0-9]+)$ chat.php?partner_role=$1&partner_id=$2 [L]
+
+# =========================
+# Common Routes
+# =========================
+RewriteRule ^otp/send$ otp/send_otp.php [L]
+RewriteRule ^otp/verify$ otp/verify_otp.php [L]
+RewriteRule ^apply-coupon$ apply_coupon.php [L]
+RewriteRule ^contact-us$ contact_us.php [L]

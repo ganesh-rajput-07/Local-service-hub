@@ -1,0 +1,41 @@
+local_service_hub/
+│
+├── config/
+│   └── db_connect.php         # Database connection file
+│
+├── public/                    # Public files (can be root folder)
+│   ├── css/                   # CSS files
+│   ├── js/                    # JavaScript files
+│   └── uploads/               # Uploaded profile images, service images
+│
+├── admin/                     # Admin dashboard files
+│   ├── dashboard.php
+│   ├── manage_users.php
+│   ├── manage_vendors.php
+│   ├── manage_services.php
+│   └── manage_bookings.php
+│
+├── vendor/                    # Vendor dashboard files
+│   ├── dashboard.php
+│   ├── add_service.php
+│   ├── my_bookings.php
+│   └── chat.php
+│
+├── user/                      # Customer dashboard files
+│   ├── dashboard.php
+│   ├── my_bookings.php
+│   ├── chat.php
+│   └── profile.php
+│
+├── auth/                      # Authentication files
+│   ├── login.php
+│   ├── register.php
+│   ├── verify_otp.php
+│   └── logout.php
+│
+├── otp/                       # OTP generation & email sending
+│   └── send_otp.php
+│
+├── index.php                  # Home page
+├── services.php               # Service listing page
+└── booking.php                # Booking process page
