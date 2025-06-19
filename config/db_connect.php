@@ -1,4 +1,11 @@
 <?php
+
+require '../vendor/autoload.php'; // Path adjust kar lena
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../'); // Agar config folder me ho
+$dotenv->load();
+
+
 date_default_timezone_set('Asia/Kolkata');
 
 $host = 'localhost';

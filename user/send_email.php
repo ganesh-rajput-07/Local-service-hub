@@ -2,6 +2,9 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
+
 require '../vendor/autoload.php'; // Path adjust kar lena
 
 function sendEmail($to, $subject, $body) {
@@ -12,13 +15,13 @@ function sendEmail($to, $subject, $body) {
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'krishimitrasai@gmail.com'; // Apna Gmail ID
-        $mail->Password   = 'wguj tdqr dohj hist'; // Gmail App Password
+        $mail->Username   = $_ENV['SMTP_USER']; // Apna Gmail ID
+        $mail->Password   = $_ENV['SMTP_PASS']; // Gmail App Password
         $mail->SMTPSecure = 'tls';
         $mail->Port       = 587;
 
         // Email sender & receiver
-        $mail->setFrom('krishimitrasai@gmail.com', 'Local Service Hub');
+        $mail->setFrom($_ENV['SMTP_USER'], 'Local Service Hub');
         $mail->addAddress($to);
 
         // Email content

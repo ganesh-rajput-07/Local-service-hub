@@ -6,6 +6,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['cart']) || !isset($_SESSIO
     exit();
 }
 
+
 $total_amount = $_SESSION['total_amount'];
 ?>
 
@@ -57,7 +58,7 @@ $total_amount = $_SESSION['total_amount'];
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
     var options = {
-        "key": "rzp_test_fRtqZZVid7nJAj", // Replace with your Razorpay Key ID
+        "key": $_ENV['RAZORPAY_KEY'], // Replace with your Razorpay Key ID
         "amount": <?php echo $total_amount * 100; ?>, // Amount in paise
         "currency": "INR",
         "name": "Local Service Hub",

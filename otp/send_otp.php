@@ -58,12 +58,12 @@ try {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'krishimitrasai@gmail.com';  // Your Gmail
-    $mail->Password = 'wguj tdqr dohj hist';                         // Your Gmail App Password
+    $mail->Username = $_ENV['SMTP_USER'];  // Your Gmail
+    $mail->Password = $_ENV['SMTP_PASS'];                         // Your Gmail App Password
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
 
-    $mail->setFrom('krishimitrasai@gmail.com', 'Local Service Hub');
+    $mail->setFrom($_ENV['SMTP_USER'], 'Local Service Hub');
     $mail->addAddress($email);
 
     $mail->isHTML(true);
