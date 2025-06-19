@@ -3,6 +3,9 @@ date_default_timezone_set('Asia/Kolkata');
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../'); // Agar config folder me ho
+$dotenv->load();
+
 require '../vendor/autoload.php';
 include('../config/db_connect.php');
 session_start();
