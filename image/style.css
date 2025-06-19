@@ -1,0 +1,331 @@
+*{
+    margin: 0;
+    font-family: Arial;
+    border: border-box;
+
+}
+.navbar{
+    height: 60px;
+    background-color: #0f1111;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.nav-logo{
+    height: 50px;
+    width: 100px;
+}
+.logo
+{
+    background-image: url("1706591049184.png");
+    background-size: cover;
+    height: 50px;
+    width: 100px;
+}
+.border
+{
+    border: 2px solid transparent;
+}
+.border:hover{
+    border: 1.5px solid white;
+}
+.add-first
+{
+color: #cccccc;
+font-size: 0.85rem;
+margin-left: 15px;
+}
+.add-second
+{
+    font-size: 1rem;
+    margin-left: 3px;
+}
+.add-icon
+{
+    display: flex;
+    align-items: center;
+}
+.nav-search{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(121, 119, 179);
+    width: 620px;
+    height: 40px;
+    border-radius: 4px;
+}
+
+.Search-select{
+    background-color: #f3f3f3;
+    width: 50px;
+    text-align: center;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border: none;
+}
+.search-input{
+   width: 100%; 
+   font-size: 1rem;
+   border: none;
+}
+.search-icon{
+    width: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    background-color: rgb(104, 49, 155);
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    color: white;
+}
+
+span{
+    font-size: 0.7rem;
+}
+.nav-sec{
+font-size: 0.85rem;
+font-weight: 700;
+}
+.nav-search:hover{
+    border: 2px solid rgb(104, 49, 155);
+}
+.nav-order i {
+font-size: 30px;
+}
+.nav-order{
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+.panel{
+    height: 40px;
+    background-color: #6e6e97;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.panel-ops p{
+    display: inline;
+    margin-left: 15px;
+}
+.panel-ops{
+    width: 70%;
+    font-size: 0.85rem;
+    align-items: center;
+    display: flex;
+    justify-items: center;
+    margin-left: 5px;
+    justify-content:space-evenly;
+
+
+}
+.nv{
+    width: 70%;
+    font-size: 0.85rem;
+    align-items: center;
+    display: flex;
+    justify-items: center;
+    margin-left: 5px;
+    justify-content: left;
+
+}
+.panel-deal{
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+.hero-section{
+    background-image: url("floating laptop (1).jpg");
+    height: 400px;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    
+}
+.hero-section:hover{
+    background-image: url("white man in glasses and blue cap (1).jpg");
+}
+
+.hero-message{
+   background-color: white;
+   color: #0f1111;
+   height: 40px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 0.85rem;
+   width: 85%;
+   margin-bottom: 25px;
+   
+}
+.hero-message a{
+    color: #007185;
+    
+}
+.hero-message p{
+    position: absolute;
+    top: 450px;
+    left:100px;
+    animation: hero 3s none 0s inherit normal;
+}
+
+@keyframes hero{
+    from{
+        left:115px;
+    }
+    to{
+        left:1000px;
+    }
+}
+.hero-message:hover{
+    background-color: white;
+   color: red;
+   height: 40px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 0.85rem;
+   width: 85%;
+   margin-bottom: 25px;
+}
+.service-section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-evenly ;
+    background-color: #91919f;
+}
+.box{
+    border: 2px solid black;
+    height: 400px;
+    width: 23%;
+    background-color: white;
+    padding: 20px 0px 15px;
+    margin: 15px;
+    box-shadow: 10px 20px 3px;
+    transition: box-shadow 0.1s, transform 0.1s;
+    transition: box-shadow 0.3s, transform 0.3s;
+
+}
+.box:hover{
+    border: 2px solid rgb(104, 49, 155);
+    box-shadow: 0px 0px 30px rgba(0,0,0, 0.6);
+  cursor: pointer;
+  transform: translateY(-5px);
+}
+
+
+.box-img{
+    
+    height: 300px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.box-content{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.box-content p{
+    color: #007185;
+}
+.footer{
+    margin-top: 15px;
+}
+.foot-p1{
+    background-color: #37475a;
+    color: white;
+    height: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 0.85rem;
+}
+.h3:hover{
+    border: 1.5px solid white;
+}
+.foot-p2{
+    background-color: #222f3d;
+    color: white;
+    height: 300px;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+ul{
+    margin-top: 20px;
+}
+ul a{
+    display: block;
+    font-size: 0.85rem;
+    margin-top: 10px;
+    color: #dddddd;
+}
+.foot-p3{
+    background-color: #222f3d;
+    color: white;
+    border-top: 0.5px solid white;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo
+{
+    background-image: url("1706591049184.png");
+    background-size: cover;
+    height: 50px;
+    width: 100px;
+}
+.foot-p4{
+    background-color: #0f1111;
+    color: white;
+    height: 85px;
+}
+.pages{
+font-size: 0.7rem;
+text-align: center;
+padding-top: 25px;
+}
+.copyright{
+padding-top: 5px;
+font-size: 0.7rem;
+text-align: center;
+} 
+
+
+
+
+
+/* Add this media query at the end of your CSS */
+@media only screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .nav-search {
+        width: auto;
+    }
+
+    .service-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .box {
+        width: 90%; /* Adjust width as needed */
+        margin: 15px auto; /* Center align boxes */
+    }
+
+    .hero-message p {
+        top: 350px; /* Adjust top position for smaller screens */
+        left: 20px; /* Adjust left position for smaller screens */
+    }
+
+    .foot-p2 {
+        flex-direction: column;
+    }
+}
