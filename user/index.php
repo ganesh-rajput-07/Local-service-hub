@@ -96,7 +96,7 @@ $cart_count = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
         }
         .theme-toggle {
             position: fixed;
-            bottom: 20px;
+            top: 60px;
             right: 20px;
             background: var(--link-color);
             color: white;
@@ -443,7 +443,7 @@ input[type="radio"] {
     </style>
 </head>
 <body>
-
+<elevenlabs-convai agent-id="agent_01jy6eg2k9ffds3qf2vcp6m99g"></elevenlabs-convai><script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
