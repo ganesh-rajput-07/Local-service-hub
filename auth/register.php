@@ -48,7 +48,7 @@ if (isset($_POST['register'])) {
     <title>Register | Local Service Hub</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href="../assets/lsh.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../image/logo.png" type="image/x-icon">
     <style>
         :root {
             --clr-bg: #0f172a;
@@ -94,7 +94,7 @@ if (isset($_POST['register'])) {
             content: "";
             position: absolute;
             inset: 0;
-            background: linear-gradient(130deg, var(--clr-primary-from), var(--clr-primary-to));
+            /* background: linear-gradient(130deg, var(--clr-primary-from), var(--clr-primary-to)); */
             opacity: .25;
             mix-blend-mode: screen;
         }
