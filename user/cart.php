@@ -76,6 +76,8 @@ if (isset($_POST['checkout'])) {
 $page_title = "Cart";
 include('layout.php');
 ?>
+<!-- Theme Toggle Button -->
+<button class="theme-toggle-btn" onclick="toggleTheme()">Switch Theme</button>
 
 <div class="container mt-4">
     <h2 class="mb-4">Your Cart</h2>
@@ -150,3 +152,62 @@ include('layout.php');
         <a href="dashboard.php" class="btn btn-primary">Go Back to Services</a>
     <?php } ?>
 </div>
+<style>
+:root {
+    --bg-gradient-dark: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    --bg-gradient-light: linear-gradient(135deg, #f8fafc, #e2e8f0, #cbd5e1);
+    --text-color-dark: #ffffff;
+    --text-color-light: #1e293b;
+}
+
+/* Body Theme Styling */
+body[data-theme="dark"] {
+    background: var(--bg-gradient-dark);
+    color: var(--text-color-dark);
+}
+body[data-theme="light"] {
+    background: var(--bg-gradient-light);
+    color: var(--text-color-light);
+}
+
+/* Table Styling (Text color consistency) */
+[data-theme="dark"] .table {
+    color: var(--text-color-dark);
+}
+[data-theme="light"] .table {
+    color: var(--text-color-light);
+}
+
+/* Theme Toggle Button Styling */
+.theme-toggle-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #7b2ff7;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    font-weight: 500;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    cursor: pointer;
+    z-index: 999;
+    transition: background 0.3s ease;
+}
+.theme-toggle-btn:hover {
+    background: #9a43f9;
+}
+</style>
+<script>
+    function toggleTheme() {
+        const currentTheme = document.body.getAttribute("data-theme") || "dark";
+        const newTheme = currentTheme === "dark" ? "light" : "dark";
+        document.body.setAttribute("data-theme", newTheme);
+        localStorage.setItem("cart_theme", newTheme);
+    }
+
+    window.onload = () => {
+        const savedTheme = localStorage.getItem("cart_theme") || "dark";
+        document.body.setAttribute("data-theme", savedTheme);
+    };
+</script>

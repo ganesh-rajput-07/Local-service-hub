@@ -10,6 +10,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] != 'user') {
 $page_title = "Dashboard";
 include('layout.php');
 
+
 $user_id = $_SESSION['user_id'];
 
 // Get user coordinates
@@ -59,6 +60,8 @@ $services = $conn->query($query);
     </select>
 
     <button type="submit" class="btn btn-primary">Search</button>
+    <button class="theme-toggle-btn" onclick="toggleTheme()">Switch Theme</button>
+
 </form>
 
 <div class="row">
@@ -68,22 +71,176 @@ $services = $conn->query($query);
             $main_image = isset($images[0]) ? "../uploads/" . $images[0] : "../assets/default.png"; ?>
 
             <div class="col-md-4 mb-4">
-                <div class="card service-card h-100">
-                    <img src="<?php echo $main_image; ?>" class="card-img-top" style="height: 200px; object-fit: cover;" onerror="this.onerror=null;this.src='../assets/default.png';">
-                    <div class="card-body">
-                        <h5 class="card-title"><?php echo $service['title']; ?></h5>
-                        <span class="badge bg-primary mb-2"><?php echo $service['category_name']; ?></span>
-                        <p class="card-text"><?php echo substr($service['description'], 0, 100) . "..."; ?></p>
-                        <p><strong>Price:</strong> ₹<?php echo $service['price']; ?></p>
-                        <p><strong>Vendor:</strong> <?php echo $service['vendor_name']; ?> (@<?php echo $service['vendor_username']; ?>)</p>
-                        <p><strong>Distance:</strong> <?php echo round($service['distance'], 2); ?> km</p>
-                        <a href="service_detail.php?id=<?php echo $service['id']; ?>" class="btn btn-sm btn-outline-primary me-2" target="_blank">View Details</a>
-                        <a href="vendor_profile.php?vendor_id=<?php echo $service['vendor_id']; ?>" target="_blank" class="btn btn-sm btn-outline-success">View Vendor</a>
+                <div class="flip-card service-flip">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="<?php echo $main_image; ?>" alt="Service Image" class="img-fluid" onerror="this.onerror=null;this.src='../assets/default.png';">
+                            <h5 class="mt-3 text-center fw-bold"><?php echo $service['title']; ?></h5>
+                        </div>
+                        <div class="flip-card-back">
+                            <span class="badge bg-primary mb-2"><?php echo $service['category_name']; ?></span>
+                            <p><?php echo substr($service['description'], 0, 100) . "..."; ?></p>
+                            <p><strong>Price:</strong> ₹<?php echo $service['price']; ?></p>
+                            <p><strong>Vendor:</strong> <?php echo $service['vendor_name']; ?> (@<?php echo $service['vendor_username']; ?>)</p>
+                            <p><strong>Distance:</strong> <?php echo round($service['distance'], 2); ?> km</p>
+                         <a href="service_detail.php?id=<?php echo $service['id']; ?>" 
+   class="btn btn-sm btn-service-detail me-2">View Details</a>
+
+<a href="vendor_profile.php?vendor_id=<?php echo $service['vendor_id']; ?>" 
+   class="btn btn-sm btn-service-vendor">View Vendor</a>
+
+                        </div>
                     </div>
                 </div>
             </div>
     <?php }
     } else {
-        echo "<div class='alert alert-info'><p class='text-muted'>No services available near you.</p>";
+        echo "<div class='alert alert-info'><p class='text-muted'>No services available near you.</p></div>";
     } ?>
 </div>
+
+<style>
+    .me-2{
+        margin: .5rem;
+    }
+    .service-flip {
+        perspective: 1000px;
+    }
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 340px;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+    }
+    .flip-card:hover .flip-card-inner,
+    .flip-card:focus-within .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 1rem;
+        overflow: hidden;
+        padding: 1rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        background: linear-gradient(135deg, #1f2937, #4b5563);
+        color: #f8fafc;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .flip-card-back {
+        transform: rotateY(180deg);
+    }
+    .flip-card-front img {
+        height: 280px;
+        width: 100%;
+        object-fit: contain;
+        border-radius: 0.75rem;
+    }
+    .flip-card-front h5 {
+        margin-top: 1rem;
+        font-weight: 600;
+    }
+    .btn-service-detail {
+    background: linear-gradient(135deg, blueviolet, #7b2ff7);
+    color: white;
+    border: none;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-service-detail:hover {
+    background: linear-gradient(135deg, #7b2ff7, blueviolet);
+    transform: scale(1.05);
+}
+
+.btn-service-vendor {
+    background-color: #00c29e;
+    color: white;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-service-vendor:hover {
+    background-color: #00a58a;
+    transform: scale(1.05);
+}
+h2{
+    text-align:center;
+}
+:root {
+    --bg-gradient-dark: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    --bg-gradient-light: linear-gradient(135deg, #f8fafc, #e2e8f0, #cbd5e1);
+    --text-color-dark: #ffffff;
+    --text-color-light: #1e293b;
+}
+
+/* Body theme switch */
+body[data-theme="dark"] {
+    background: var(--bg-gradient-dark);
+    color: var(--text-color-dark);
+}
+body[data-theme="light"] {
+    background: var(--bg-gradient-light);
+    color: var(--text-color-light);
+}
+
+/* Toggle button styling */
+.theme-toggle-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #7b2ff7;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    font-weight: 500;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    cursor: pointer;
+    z-index: 999;
+    transition: background 0.3s ease;
+}
+.theme-toggle-btn:hover {
+    background: #9a43f9;
+}
+
+/* Flip card adjustments for theme */
+[data-theme="light"] .flip-card-front,
+[data-theme="light"] .flip-card-back {
+    background: var(--bg-gradient-light);
+    color: var(--text-color-light);
+}
+[data-theme="dark"] .flip-card-front,
+[data-theme="dark"] .flip-card-back {
+    background: var(--bg-gradient-dark);
+    color: var(--text-color-dark);
+}
+
+</style>
+<script>
+    // Save theme to localStorage
+    function toggleTheme() {
+        const current = document.body.getAttribute("data-theme") || "dark";
+        const nextTheme = current === "dark" ? "light" : "dark";
+        document.body.setAttribute("data-theme", nextTheme);
+        localStorage.setItem("dashboard-theme", nextTheme);
+    }
+
+    // Load previously saved theme on page load
+    window.onload = () => {
+        const savedTheme = localStorage.getItem("dashboard-theme") || "dark";
+        document.body.setAttribute("data-theme", savedTheme);
+    };
+</script>

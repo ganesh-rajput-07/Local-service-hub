@@ -54,37 +54,129 @@ include('layout.php');
 ?>
 
 <style>
-    .chat-container {
-        height: 500px;
-        overflow-y: scroll;
-        background-color: #f1f1f1;
-        padding: 15px;
-        border-radius: 10px;
-        display: flex;
-        flex-direction: column;
-    }
-    .message {
-        max-width: 60%;
-        margin-bottom: 10px;
-        padding: 10px;
-        border-radius: 15px;
-        word-wrap: break-word;
-    }
-    .sent {
-        align-self: flex-end;
-        text-align: right;
-        background-color: #28a745;
-        color: white;
-    }
-    .received {
-        align-self: flex-start;
-        text-align: left;
-        background-color: #fd7e14;
-        color: white;
-    }
-</style>
+:root {
+    --chat-bg: linear-gradient(135deg, #5842bf, #715bf6);
+    --chat-text-color: #fff;
+}
 
-<h2 class="mb-4">Chat</h2>
+body.dark-mode {
+    --chat-bg: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    --chat-text-color: #f1f1f1;
+    background-color: #121212;
+}
+
+.chat-container {
+    height: 500px;
+    overflow-y: scroll;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    background: var(--chat-bg);
+    color: var(--chat-text-color);
+}
+
+.message {
+    max-width: 75%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    word-wrap: break-word;
+    position: relative;
+    background-color: white;
+    color: black;
+}
+
+.sent {
+    align-self: flex-end;
+    background-color: #fff;
+    color: #000;
+    border-top-right-radius: 0;
+}
+
+.received {
+    align-self: flex-start;
+    background-color: #5e48e8;
+    color: #fff;
+    border-top-left-radius: 0;
+}
+
+.chat-sidebar {
+    height: 100%;
+    overflow-y: auto;
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-right: 1px solid #ddd;
+}
+
+@media (max-width: 768px) {
+    .chat-sidebar {
+        display: block !important;
+        margin-bottom: 15px;
+    }
+}
+
+
+:root {
+    --bg-dark: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    --bg-light: linear-gradient(135deg, #f1f5f9, #e2e8f0, #cbd5e1);
+    --text-dark: #ffffff;
+    --text-light: #1e293b;
+}
+
+/* THEME STYLES */
+body[data-theme='dark'] {
+    background: var(--bg-dark);
+    color: var(--text-dark);
+}
+body[data-theme='light'] {
+    background: var(--bg-light);
+    color: var(--text-light);
+}
+
+.theme-toggle-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #7b2ff7;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: 500;
+    border-radius: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: background 0.3s ease;
+}
+.theme-toggle-btn:hover {
+    background: #9a43f9;
+}
+
+/* TABLE ADAPTATION */
+body[data-theme='dark'] table {
+    background-color: rgba(255,255,255,0.05);
+    color: #f8f9fa;
+}
+body[data-theme='dark'] .table-dark {
+    background-color: #1f2937 !important;
+}
+body[data-theme='dark'] .table-bordered td,
+body[data-theme='dark'] .table-bordered th {
+    border-color: rgba(255,255,255,0.2);
+}
+
+.alert-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+
+</style>
+<div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
+    <h2 class="mb-2">Chat</h2>
+    <button class="theme-toggle-btn" onclick="toggleTheme()">Switch Theme</button>
+
+</div>
 
 <div class="row">
     <!-- Chat Partner List -->
@@ -132,7 +224,32 @@ include('layout.php');
 
 </div> <!-- Close flex-grow-1 from layout -->
 </div> <!-- Close d-flex from layout -->
+<script>
+function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
+}
+
+window.onload = function () {
+    var chatBox = document.getElementById("chatBox");
+    if (chatBox) chatBox.scrollTop = chatBox.scrollHeight;
+}
+</script>
+<script>
+    function toggleTheme() {
+        const body = document.body;
+        const current = body.getAttribute("data-theme") || "light";
+        const next = current === "dark" ? "light" : "dark";
+        body.setAttribute("data-theme", next);
+        localStorage.setItem("booking-theme", next);
+    }
+
+    // Load saved theme
+    window.onload = () => {
+        const saved = localStorage.getItem("booking-theme") || "light";
+        document.body.setAttribute("data-theme", saved);
+    };
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+</body>      
 </html>

@@ -25,9 +25,33 @@ $notification_count = $conn->query("SELECT COUNT(*) AS total FROM notifications 
         .footer { background-color: #1E3A8A; color: white; padding: 10px 0; text-align: center; position: fixed; bottom: 0; width: 100%; }
         .service-card { transition: transform 0.2s; }
         .service-card:hover { transform: scale(1.02); }
+          :root[data-theme="dark"] {
+            --bg-color: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            --text-color: #ffffff;
+            --card-bg: #1e1e2f;
+            --link-color: #8a2be2;
+        }
+        :root[data-theme="light"] {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --card-bg: #f8f9fa;
+            --link-color: #5b2eff;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            transition: background 0.3s, color 0.3s;
+        }
+        .navbar {
+            background: rgba(12, 10, 50, 0.95);
+        }
     </style>
 </head>
-<body>
+<body>      
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark">

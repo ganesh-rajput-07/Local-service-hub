@@ -3,9 +3,6 @@ date_default_timezone_set('Asia/Kolkata');
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../'); // Agar config folder me ho
-$dotenv->load();
-
 require '../vendor/autoload.php';
 include('../config/db_connect.php');
 session_start();
@@ -61,12 +58,12 @@ try {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = $_ENV['SMTP_USER'];  // Your Gmail
-    $mail->Password = $_ENV['SMTP_PASS'];                         // Your Gmail App Password
+    $mail->Username = 'krishimitrasai@gmail.com';  // Your Gmail
+    $mail->Password = 'wguj tdqr dohj hist';                         // Your Gmail App Password
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
 
-    $mail->setFrom($_ENV['SMTP_USER'], 'Local Service Hub');
+    $mail->setFrom('krishimitrasai@gmail.com', 'Local Service Hub');
     $mail->addAddress($email);
 
     $mail->isHTML(true);

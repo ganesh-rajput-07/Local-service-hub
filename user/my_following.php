@@ -23,6 +23,8 @@ $result = $conn->query("SELECT v.id, v.name, v.username, v.profile_image, v.skil
 $page_title = "My Following";
 include('layout.php');
 ?>
+<!-- Theme Toggle Button -->
+<button class="theme-toggle-btn" onclick="toggleTheme()">Switch Theme</button>
 
 <div class="container mt-4">
     <h2 class="mb-4">Vendors You Follow</h2>
@@ -60,3 +62,45 @@ include('layout.php');
         <a href="dashboard.php" class="btn btn-primary">Explore Vendors</a>
     <?php } ?>
 </div>
+<style>
+    :root {
+    --bg-gradient-dark: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    --bg-gradient-light: linear-gradient(135deg, #f8fafc, #e2e8f0, #cbd5e1);
+    --text-dark: #ffffff;
+    --text-light: #1e293b;
+}
+
+/* Body themes */
+body[data-theme="dark"]  { background: var(--bg-gradient-dark); color: var(--text-dark);  }
+body[data-theme="light"] { background: var(--bg-gradient-light); color: var(--text-light); }
+
+/* Table colours */
+[data-theme="dark"]  .table { color: var(--text-dark);  }
+[data-theme="light"] .table { color: var(--text-light); }
+
+/* Toggle button */
+.theme-toggle-btn{
+    position:fixed;
+    bottom:20px; right:20px;
+    background:#7b2ff7; color:#fff;
+    padding:10px 20px; border:none;
+    border-radius:30px; font-weight:500;
+    box-shadow:0 0 10px rgba(0,0,0,.3);
+    cursor:pointer; z-index:999;
+    transition:background .3s;
+}
+.theme-toggle-btn:hover{ background:#9a43f9; }
+
+</style>
+<script>
+function toggleTheme(){
+    const current = document.body.getAttribute("data-theme") || "dark";
+    const next    = current === "dark" ? "light" : "dark";
+    document.body.setAttribute("data-theme", next);
+    localStorage.setItem("following_theme", next);
+}
+window.onload = () => {
+    const saved = localStorage.getItem("following_theme") || "dark";
+    document.body.setAttribute("data-theme", saved);
+};
+</script>
