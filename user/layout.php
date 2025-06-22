@@ -19,31 +19,92 @@ $cart_count = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../assets/lsh.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../image/logo.png" type="image/x-icon">
     <title><?php echo $page_title; ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+         :root[data-theme="dark"] {
+            --bg-color: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            --text-color: #ffffff;
+            --card-bg: #1e1e2f;
+            --link-color: #8a2be2;
+        }
+        :root[data-theme="light"] {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --card-bg: #f8f9fa;
+            --link-color: #5b2eff;
+        }
+
         body {
-            background-color: #F1F5F9;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            transition: background 0.3s, color 0.3s;
         }
         .navbar {
-            background-color: #1E3A8A;
+            background: rgba(12, 10, 50, 0.95);
         }
-        .navbar-brand {
-            font-weight: bold;
-            color: white !important;
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            background: radial-gradient(circle at top left, #5b2eff, #8a2be2);
+            color: #fff;
         }
-        .nav-link {
-            color: white !important;
-            position: relative;
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+        }
+        .hero p {
+            font-size: 1.2rem;
+        }
+        .hero .btn {
+            margin-top: 20px;
+            background-color: #8a2be2;
+            border: none;
+            color: #fff;
+        }
+        .section {
+            padding: 60px 20px;
+        }
+        .card {
+            background: var(--card-bg);
+            border: none;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .card i {
+            font-size: 2rem;
+            color: var(--link-color);
         }
         .footer {
-            background-color: #1E3A8A;
-            color: white;
-            padding: 10px 0;
+            background: #0f0c29;
+            padding: 30px;
+            text-align: center;
+        }
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+        .theme-toggle {
             position: fixed;
-            bottom: 0;
-            width: 100%;
+            bottom: 20px;
+            right: 20px;
+            background: var(--link-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            z-index: 1000;
         }
         .service-card {
             transition: transform 0.2s;
@@ -58,7 +119,7 @@ $cart_count = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-        <a class="navbar-brand" href="dashboard.php">Local Service Hub</a>
+        <a class="navbar-brand" href="index.php">Local Service Hub</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>

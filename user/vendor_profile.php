@@ -92,3 +92,96 @@ document.head.appendChild(bootstrapIcons);
 </script>
 
 <a href="dashboard.php" class="btn btn-secondary">Back to Dashboard</a>
+<style>
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.card {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+
+.btn-success {
+    background-color: #10b981;
+    border: none;
+}
+
+.btn-danger {
+    background-color: #ef4444;
+    border: none;
+}
+
+.btn-secondary {
+    background-color: #64748b;
+    border: none;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+:root {
+    --bg-color: #f8fafc;
+    --text-color: #111827;
+    --card-bg: #ffffff;
+}
+
+.dark-theme {
+    --bg-color: #0f172a;
+    --text-color: #f8fafc;
+    --card-bg: #1e293b;
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-color);
+}
+</style>
+
+<button class="theme-toggle" onclick="toggleTheme()">
+    <i class="fa fa-moon" id="theme-icon"></i>
+</button>
+
+<script>
+function toggleTheme() {
+    document.body.classList.toggle('dark-theme');
+    const icon = document.getElementById('theme-icon');
+    if (document.body.classList.contains('dark-theme')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+    }
+}
+</script>
+
+<script>
+// Ensure theme is preserved on reload (Optional)
+window.addEventListener('DOMContentLoaded', () => {
+    const isDark = localStorage.getItem('theme') === 'dark';
+    if (isDark) {
+        document.body.classList.add('dark-theme');
+        document.getElementById('theme-icon').classList.replace('fa-moon', 'fa-sun');
+    }
+});
+
+function toggleTheme() {
+    const isDark = document.body.classList.toggle('dark-theme');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    const icon = document.getElementById('theme-icon');
+    icon.classList.toggle('fa-sun', isDark);
+    icon.classList.toggle('fa-moon', !isDark);
+}
+</script>
